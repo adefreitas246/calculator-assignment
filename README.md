@@ -12,3 +12,5 @@ A web-based, interactive calculator built using **HTML, CSS, and pure JavaScript
 *   **State Management:** Accurately stores the first input number, the selected operator, and sequential entries to perform math calculations on command.
 *   **Chained Operations:** Built-in logic to evaluate successive operations dynamically. For example, entering `12 + 7 - 5 * 3 =` correctly evaluates a single pair at a time to yield `42`.
 *   **Immediate Evaluation:** When a second operator is pressed (e.g., `12 + 7 -`), the calculator instantly evaluates the first pair (`19`) and uses that result as the starting value for the next operation.
+
+Link: https://adefreitas246.github.io/calculator-assignment/
