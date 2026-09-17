@@ -29,11 +29,11 @@ function operate(operation, num1, num2) {
     }
 }
 
-operation = prompt("Enter an operation (+, -, *, /):");
-num1 = parseFloat(prompt("Enter the first number:"));
-num2 = parseFloat(prompt("Enter the second number:"));
+const operation = prompt("Enter an operation (+, -, *, /):");
+const num1 = parseFloat(prompt("Enter the first number:"));
+const num2 = parseFloat(prompt("Enter the second number:"));
 
-result = operate(operation, num1, num2);
+const result = operate(operation, num1, num2);
 if (result !== null) {
     alert(num1 + " " + operation + " " + num2 + " = " + result);
 } else {
