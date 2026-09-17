@@ -1,84 +1,84 @@
 * {
-      box-sizing: border-box;
-    }
+    box-sizing: border-box;
+  }
 
-    body {
-      min-height: 100vh;
-      margin: 0;
-      display: grid;
-      place-items: center;
-      font-family: Arial, sans-serif;
-      background: #eef2f7;
-    }
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  font-family: Arial, sans-serif;
+  background: #eef2f7;
+}
 
-    .calculator {
-      width: 330px;
-      max-width: 92%;
-      padding: 18px;
-      border-radius: 12px;
-      background: #222;
-      box-shadow: 0 8px 25px #0002;
-    }
+.calculator {
+  width: 330px;
+  max-width: 92%;
+  padding: 18px;
+  border-radius: 12px;
+  background: #222;
+  box-shadow: 0 8px 25px #0002;
+}
 
-    h1 {
-      margin: 0 0 15px;
-      color: white;
-      text-align: center;
-      font-size: 24px;
-    }
+h1 {
+  margin: 0 0 15px;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+}
 
-    #display {
-      min-height: 72px;
-      margin-bottom: 12px;
-      padding: 18px 12px;
-      overflow-wrap: anywhere;
-      border-radius: 6px;
-      background: white;
-      text-align: right;
-      font-size: 30px;
-    }
+#display {
+  min-height: 72px;
+  margin-bottom: 12px;
+  padding: 18px 12px;
+  overflow-wrap: anywhere;
+  border-radius: 6px;
+  background: white;
+  text-align: right;
+  font-size: 30px;
+}
 
-    .keys {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-    }
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
 
-    button {
-      height: 56px;
-      border: 0;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 19px;
-    }
+button {
+  height: 56px;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 19px;
+}
 
-    button:hover {
-      filter: brightness(.92);
-    }
+button:hover {
+  filter: brightness(.92);
+}
 
-    .operator {
-      color: white;
-      background: #f59e0b;
-    }
+.operator {
+  color: white;
+  background: #f59e0b;
+}
 
-    .clear {
-      grid-column: span 2;
-      color: white;
-      background: #dc2626;
-    }
+.clear {
+  grid-column: span 2;
+  color: white;
+  background: #dc2626;
+}
 
-    .zero {
-      grid-column: span 2;
-    }
+.zero {
+  grid-column: span 2;
+}
 
-    .equals {
-      color: white;
-      background: #16a34a;
-    }
+.equals {
+  color: white;
+  background: #16a34a;
+}
 
-    .help {
-      margin: 14px 0 0;
-      color: #bbb;
-      text-align: center;
-      font-size: 12px;
-    }
+.help {
+  margin: 14px 0 0;
+  color: #bbb;
+  text-align: center;
+  font-size: 12px;
+}
