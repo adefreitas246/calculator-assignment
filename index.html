@@ -4,89 +4,245 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Calculator</title>
+
   <style>
-    * { box-sizing: border-box; }
-    body { min-height: 100vh; margin: 0; display: grid; place-items: center; font-family: Arial, sans-serif; background: #eef2f7; }
-    .calculator { width: 330px; max-width: 92%; padding: 18px; border-radius: 12px; background: #222; box-shadow: 0 8px 25px #0002; }
-    h1 { margin: 0 0 15px; color: white; text-align: center; font-size: 24px; }
-    #display { min-height: 72px; margin-bottom: 12px; padding: 18px 12px; overflow-wrap: anywhere; border-radius: 6px; background: white; text-align: right; font-size: 30px; }
-    .keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    button { height: 56px; border: 0; border-radius: 6px; cursor: pointer; font-size: 19px; }
-    button:hover { filter: brightness(.92); }
-    .operator { color: white; background: #f59e0b; }
-    .clear { grid-column: span 2; color: white; background: #dc2626; }
-    .zero { grid-column: span 2; }
-    .equals { color: white; background: #16a34a; }
-    .help { margin: 14px 0 0; color: #bbb; text-align: center; font-size: 12px; }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      font-family: Arial, sans-serif;
+      background: #eef2f7;
+    }
+
+    .calculator {
+      width: 330px;
+      max-width: 92%;
+      padding: 18px;
+      border-radius: 12px;
+      background: #222;
+      box-shadow: 0 8px 25px #0002;
+    }
+
+    h1 {
+      margin: 0 0 15px;
+      color: white;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    #display {
+      min-height: 72px;
+      margin-bottom: 12px;
+      padding: 18px 12px;
+      overflow-wrap: anywhere;
+      border-radius: 6px;
+      background: white;
+      text-align: right;
+      font-size: 30px;
+    }
+
+    .keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    button {
+      height: 56px;
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 19px;
+    }
+
+    button:hover {
+      filter: brightness(.92);
+    }
+
+    .operator {
+      color: white;
+      background: #f59e0b;
+    }
+
+    .clear {
+      grid-column: span 2;
+      color: white;
+      background: #dc2626;
+    }
+
+    .zero {
+      grid-column: span 2;
+    }
+
+    .equals {
+      color: white;
+      background: #16a34a;
+    }
+
+    .help {
+      margin: 14px 0 0;
+      color: #bbb;
+      text-align: center;
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
   <div class="calculator">
     <h1>Calculator</h1>
     <div id="display">0</div>
+
     <div class="keys">
       <button class="clear" onclick="clearCalculator()">Clear</button>
       <button onclick="backspace()">⌫</button>
       <button class="operator" onclick="selectOperator('/')">÷</button>
-      <button onclick="inputNumber('7')">7</button><button onclick="inputNumber('8')">8</button><button onclick="inputNumber('9')">9</button><button class="operator" onclick="selectOperator('*')">×</button>
-      <button onclick="inputNumber('4')">4</button><button onclick="inputNumber('5')">5</button><button onclick="inputNumber('6')">6</button><button class="operator" onclick="selectOperator('-')">−</button>
-      <button onclick="inputNumber('1')">1</button><button onclick="inputNumber('2')">2</button><button onclick="inputNumber('3')">3</button><button class="operator" onclick="selectOperator('+')">+</button>
-      <button class="zero" onclick="inputNumber('0')">0</button><button onclick="inputDecimal()">.</button><button class="equals" onclick="calculate()">=</button>
+
+      <button onclick="inputNumber('7')">7</button>
+      <button onclick="inputNumber('8')">8</button>
+      <button onclick="inputNumber('9')">9</button>
+      <button class="operator" onclick="selectOperator('*')">×</button>
+
+      <button onclick="inputNumber('4')">4</button>
+      <button onclick="inputNumber('5')">5</button>
+      <button onclick="inputNumber('6')">6</button>
+      <button class="operator" onclick="selectOperator('-')">−</button>
+
+      <button onclick="inputNumber('1')">1</button>
+      <button onclick="inputNumber('2')">2</button>
+      <button onclick="inputNumber('3')">3</button>
+      <button class="operator" onclick="selectOperator('+')">+</button>
+
+      <button class="zero" onclick="inputNumber('0')">0</button>
+      <button onclick="inputDecimal()">.</button>
+      <button class="equals" onclick="calculate()">=</button>
     </div>
+
     <p class="help">Keyboard input is supported.</p>
   </div>
 
   <script>
-    function add(a, b) { return a + b; }
-    function subtract(a, b) { return a - b; }
-    function multiply(a, b) { return a * b; }
-    function divide(a, b) { return b === 0 ? null : a / b; }
-
-    function operate(operator, a, b) {
-      if (operator === '+') return add(a, b);
-      if (operator === '-') return subtract(a, b);
-      if (operator === '*') return multiply(a, b);
-      if (operator === '/') return divide(a, b);
+    // Basic calculations.
+    function add(a, b) {
+      return a + b;
     }
 
+    function subtract(a, b) {
+      return a - b;
+    }
+
+    function multiply(a, b) {
+      return a * b;
+    }
+
+    function divide(a, b) {
+      if (b === 0) {
+        return null;
+      }
+
+      return a / b;
+    }
+
+    function operate(operator, a, b) {
+      if (operator === '+') {
+        return add(a, b);
+      }
+
+      if (operator === '-') {
+        return subtract(a, b);
+      }
+
+      if (operator === '*') {
+        return multiply(a, b);
+      }
+
+      if (operator === '/') {
+        return divide(a, b);
+      }
+    }
+
+    // Values the calculator needs to remember.
     const display = document.getElementById('display');
     let displayValue = '0';
     let firstNumber = null;
     let operator = null;
     let waitingForNumber = false;
 
-    function updateDisplay() { display.textContent = displayValue; }
+    function updateDisplay() {
+      display.textContent = displayValue;
+    }
 
     function inputNumber(number) {
-      if (displayValue.includes('zero')) clearCalculator();
-      if (waitingForNumber) { displayValue = number; waitingForNumber = false; }
-      else displayValue = displayValue === '0' ? number : displayValue + number;
+      if (displayValue === 'Divide by zero') {
+        clearCalculator();
+      }
+
+      if (waitingForNumber) {
+        displayValue = number;
+        waitingForNumber = false;
+      } else if (displayValue === '0') {
+        displayValue = number;
+      } else {
+        displayValue += number;
+      }
+
       updateDisplay();
     }
 
     function inputDecimal() {
-      if (waitingForNumber) { displayValue = '0.'; waitingForNumber = false; }
-      else if (!displayValue.includes('.')) displayValue += '.';
+      if (waitingForNumber) {
+        displayValue = '0.';
+        waitingForNumber = false;
+      } else if (!displayValue.includes('.')) {
+        displayValue += '.';
+      }
+
       updateDisplay();
     }
 
     function selectOperator(nextOperator) {
+      if (displayValue === 'Divide by zero') {
+        return;
+      }
+
       const currentNumber = Number(displayValue);
+
       if (operator && !waitingForNumber) {
         const result = operate(operator, firstNumber, currentNumber);
-        if (result === null) return showDivideError();
+
+        if (result === null) {
+          showDivideError();
+          return;
+        }
+
         displayValue = roundResult(result);
         firstNumber = Number(displayValue);
         updateDisplay();
-      } else if (firstNumber === null) firstNumber = currentNumber;
+      } else {
+        // Use the displayed number when starting a new calculation.
+        firstNumber = currentNumber;
+      }
+
       operator = nextOperator;
       waitingForNumber = true;
     }
 
     function calculate() {
-      if (operator === null || waitingForNumber) return;
+      if (operator === null || waitingForNumber) {
+        return;
+      }
+
       const result = operate(operator, firstNumber, Number(displayValue));
-      if (result === null) return showDivideError();
+
+      if (result === null) {
+        showDivideError();
+        return;
+      }
+
       displayValue = roundResult(result);
       firstNumber = Number(displayValue);
       operator = null;
@@ -94,32 +250,65 @@
       updateDisplay();
     }
 
-    function roundResult(number) { return Number(number.toPrecision(10)).toString(); }
+    function roundResult(number) {
+      return Number(number.toPrecision(10)).toString();
+    }
 
     function showDivideError() {
       displayValue = 'Divide by zero';
-      firstNumber = null; operator = null; waitingForNumber = true;
+      firstNumber = null;
+      operator = null;
+      waitingForNumber = true;
       updateDisplay();
     }
 
     function clearCalculator() {
-      displayValue = '0'; firstNumber = null; operator = null; waitingForNumber = false;
+      displayValue = '0';
+      firstNumber = null;
+      operator = null;
+      waitingForNumber = false;
       updateDisplay();
     }
 
     function backspace() {
-      if (waitingForNumber) return;
-      displayValue = displayValue.length > 1 ? displayValue.slice(0, -1) : '0';
+      if (waitingForNumber) {
+        return;
+      }
+
+      if (displayValue.length > 1) {
+        displayValue = displayValue.slice(0, -1);
+      } else {
+        displayValue = '0';
+      }
+
       updateDisplay();
     }
 
+    // Keyboard controls.
     document.addEventListener('keydown', event => {
-      if (/^[0-9]$/.test(event.key)) inputNumber(event.key);
-      else if (event.key === '.') inputDecimal();
-      else if (['+', '-', '*', '/'].includes(event.key)) selectOperator(event.key);
-      else if (event.key === 'Enter' || event.key === '=') calculate();
-      else if (event.key === 'Backspace') backspace();
-      else if (event.key === 'Escape') clearCalculator();
+      // Leave browser shortcuts, such as Ctrl + 0, alone.
+      if (event.ctrlKey || event.metaKey || event.altKey) {
+        return;
+      }
+
+      if (/^[0-9]$/.test(event.key)) {
+        inputNumber(event.key);
+      } else if (event.key === '.') {
+        inputDecimal();
+      } else if (['+', '-', '*', '/'].includes(event.key)) {
+        selectOperator(event.key);
+      } else if (event.key === 'Enter' || event.key === '=') {
+        calculate();
+      } else if (event.key === 'Backspace') {
+        backspace();
+      } else if (event.key === 'Escape') {
+        clearCalculator();
+      } else {
+        return;
+      }
+
+      // Avoid also activating a focused button when Enter is pressed.
+      event.preventDefault();
     });
   </script>
 </body>
